@@ -1,18 +1,22 @@
-#This is how we learned to concatenate strings in the ITF+ class.
-a = "String 1"
-b = "String 2"
-print("a =" + a + " and  b=" + b)
+import csv
 
-#This syntax utilizes the concept of the f-string, which makes things a bit easier. No + sign needed!
-x = "String 3"
-y = "String 4"
-print(f"x = {x} and y = {y}")
+file_path = r'C:\Users\student\Downloads\names.txt'
 
-#We could also use an f-string like this:
-print("c = {c} and d = {d}".format(c=1, d=2))
+with open(file_path, mode='r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
 
-job_list = {'john': 'Doctor' , 'Jane': 'Engineer', 'Jim': 'Teacher' }
+csv_file_path = r'C:\Users\student\Downloads\names.txt'
 
-for name, job in job_list.items():
-    print(f"{name} is a {job}")
-
+with open(csv_file_path, mode='r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        if len(row) == 3:
+            rank, boy_name, girl_name = row
+            print(f"Rank: {rank}")
+            print(f"Boy Name: {boy_name}")
+            print(f"Girl Name: {girl_name}")
+            print('-' * 30)
+        else:
+            print("Invalid row format:", row)
